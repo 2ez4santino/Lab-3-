@@ -16,13 +16,14 @@ legend {
 
 label {
   display: block;
-  margin-bottom: 5px;
+  margin: 5px 0;
 }
 
 input,
 select {
   width: 100%;
   padding: 8px;
+  margin-bottom: 10px;
 }
 
 .grid-4 {
@@ -48,7 +49,12 @@ select:focus {
   outline: 2px solid #007bff;
 }
 
-/* Mobile Responsive */
+button {
+  padding: 12px 20px;
+  font-size: 16px;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
   .grid-4,
   .grid-3,
