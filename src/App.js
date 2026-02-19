@@ -159,16 +159,55 @@ function App() {
           </select>
 
           <h3>Degree Program</h3>
-          <select required>
-            <option value="">Select Program</option>
-            <option>BS Computer Engineering</option>
-            <option>BS Computer Science</option>
-            <option>BS Information Technology</option>
-            <option>BS Accountancy</option>
-            <option>Bachelor of Arts in English</option>
-            <option>Master of Information Technology</option>
-            <option>Doctor of Engineering</option>
-          </select>
+<select required>
+  <option value="">Select Program</option>
+
+  {/* Undergraduate – Engineering & Architecture */}
+  <option>BS Architecture</option>
+  <option>BS Chemical Engineering</option>
+  <option>BS Civil Engineering</option>
+  <option>BS Computer Engineering</option>
+  <option>BS Electrical Engineering</option>
+  <option>BS Electronics Engineering</option>
+  <option>BS Industrial Engineering</option>
+  <option>BS Mechanical Engineering</option>
+
+  {/* Undergraduate – Computer Studies */}
+  <option>BS Computer Science</option>
+  <option>BS Data Science and Analytics</option>
+  <option>BS Entertainment and Multimedia Computing</option>
+  <option>BS Information Technology</option>
+
+  {/* Undergraduate – Business */}
+  <option>BS Accountancy</option>
+  <option>BS Accounting Information System</option>
+  <option>BS Business Administration – Financial Management</option>
+  <option>BS Business Administration – Human Resource Management</option>
+  <option>BS Business Administration – Logistics and Supply Chain Management</option>
+  <option>BS Business Administration – Marketing Management</option>
+
+  {/* Undergraduate – Arts */}
+  <option>Bachelor of Arts in English Language</option>
+  <option>Bachelor of Arts in Political Science</option>
+
+  {/* Graduate – Doctorate */}
+  <option>Doctor in Information Technology</option>
+  <option>Doctor of Engineering (Computer Engineering)</option>
+  <option>Doctor of Philosophy in Computer Science</option>
+
+  {/* Graduate – Master’s */}
+  <option>Master in Information Systems</option>
+  <option>Master in Information Technology</option>
+  <option>Master in Logistics and Supply Chain Management</option>
+  <option>Master of Engineering (Civil Engineering)</option>
+  <option>Master of Engineering (Computer Engineering)</option>
+  <option>Master of Engineering (Electrical Engineering)</option>
+  <option>Master of Engineering (Electronics Engineering)</option>
+  <option>Master of Engineering (Industrial Engineering)</option>
+  <option>Master of Engineering (Mechanical Engineering)</option>
+  <option>Master of Science in Computer Science</option>
+</select>
+
         </fieldset>
 
         <button type="submit">Submit Registration</button>
