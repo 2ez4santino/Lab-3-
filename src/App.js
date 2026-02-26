@@ -5,6 +5,8 @@ import "./App.css";
 function App() {
   const [department, setDepartment] = useState("");
   const [academicLevel, setAcademicLevel] = useState("");
+  const [nationality, setNationality] = useState("");
+  const [otherNationality, setOtherNationality] = useState("");
 
 const programs = {
   undergraduate: {
@@ -105,12 +107,30 @@ const programs = {
           <div className="grid-2">
             <div>
               <label>Nationality</label>
-              <select required>
+              <select
+                required
+                value={nationality}
+                onChange={(e) => {
+                  setNationality(e.target.value);
+                  if (e.target.value !== "Other") {
+                    setOtherNationality("");
+                  }
+                }}
+              >
                 <option value="">Select</option>
                 <option>Filipino</option>
                 <option>American</option>
                 <option>Other</option>
               </select>
+              {nationality === "Other" && (
+                <input
+                  type="text"
+                  placeholder="Please specify"
+                  value={otherNationality}
+                  onChange={(e) => setOtherNationality(e.target.value)}
+                  required
+                />
+              )}
             </div>
             <div>
               <label>Religion</label>
