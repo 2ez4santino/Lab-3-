@@ -215,6 +215,70 @@ button:active {
   }
 }
 
+/* Success banner */
+.success-banner {
+  display: inline-block;
+  width: 100%;
+  padding: 14px 18px;
+  margin-bottom: 18px;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #2ecc71, #27ae60);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 8px 20px rgba(39, 174, 96, 0.18);
+  text-align: center;
+}
+
+.success-banner .check {
+  margin-right: 8px;
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 20, 30, 0.45);
+  z-index: 9999;
+  padding: 20px;
+}
+
+.modal-box {
+  width: 100%;
+  max-width: 420px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 22px;
+  box-shadow: 0 18px 50px rgba(2, 6, 23, 0.2);
+  text-align: center;
+}
+
+.modal-box h2 {
+  color: #1e5a96;
+  margin-bottom: 8px;
+}
+
+.modal-box p {
+  color: #4a5568;
+  margin-bottom: 18px;
+}
+
+.modal-actions button {
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(90deg, #1e5a96, #2c75b5);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.modal-box.fade-in {
+  animation: fadeIn 0.35s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
   fieldset {
     padding: 20px;
   }

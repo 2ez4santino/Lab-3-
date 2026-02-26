@@ -7,6 +7,7 @@ function App() {
   const [academicLevel, setAcademicLevel] = useState("");
   const [nationality, setNationality] = useState("");
   const [otherNationality, setOtherNationality] = useState("");
+  const [showModal, setShowModal] = useState(false);
 
 const programs = {
   undergraduate: {
@@ -64,6 +65,32 @@ const programs = {
     <div className="container">
       <h1>Student Enrollment Portal</h1>
 
+      {/* Dialog-only popup — no banner */}
+
+      {showModal && (
+        <div
+          className="modal-overlay"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setShowModal(false);
+          }}
+          role="dialog"
+          aria-modal="true"
+        >
+          <div className="modal-box fade-in">
+            <h2>Registration Successful</h2>
+            <p>Your registration has been received.</p>
+            <div className="modal-actions">
+              <button
+                type="button"
+                onClick={() => setShowModal(false)}
+              >
+                OK
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <form onSubmit={(e) => {
         const emailInput = e.target.querySelector('input[type="email"]');
         if (!emailInput.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
@@ -72,9 +99,12 @@ const programs = {
           emailInput.focus();
           return;
         }
+
+        // All validations passed -> show success modal
         e.preventDefault();
-        alert('✓ Registration Successful! Your enrollment has been submitted.');
-        e.target.reset();
+        setShowModal(true);
+        // auto-hide modal after a few seconds
+        setTimeout(() => setShowModal(false), 5000);
       }}>
         {/* PERSONAL INFORMATION */}
         <fieldset>
