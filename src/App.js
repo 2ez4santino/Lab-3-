@@ -64,7 +64,18 @@ const programs = {
     <div className="container">
       <h1>Student Enrollment Portal</h1>
 
-      <form>
+      <form onSubmit={(e) => {
+        const emailInput = e.target.querySelector('input[type="email"]');
+        if (!emailInput.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+          e.preventDefault();
+          alert('Please enter a complete email address (e.g., name@email.com)');
+          emailInput.focus();
+          return;
+        }
+        e.preventDefault();
+        alert('✓ Registration Successful! Your enrollment has been submitted.');
+        e.target.reset();
+      }}>
         {/* PERSONAL INFORMATION */}
         <fieldset>
           <legend>Personal Information</legend>
@@ -147,7 +158,12 @@ const programs = {
           <div className="grid-2">
             <div>
               <label>Email Address</label>
-              <input type="email" required />
+              <input 
+                type="email" 
+                pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+                placeholder="name@email.com"
+                required 
+              />
             </div>
             <div>
               <label>Mobile Number</label>
