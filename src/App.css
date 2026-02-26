@@ -1,64 +1,205 @@
+/* ===== Global Reset ===== */
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(135deg, #f0f4f8 0%, #e8eef5 100%);
+  min-height: 100vh;
+}
+
+/* ===== Page Container ===== */
 .container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 20px;
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
 }
 
+/* ===== Main Title ===== */
+h1 {
+  text-align: center;
+  margin-bottom: 50px;
+  font-size: 32px;
+  color: #1e5a96;
+  font-weight: 700;
+}
+
+/* ===== Fieldset Card Style ===== */
 fieldset {
+  background: #f8f9fb;
+  border: 2px solid #e5e9f0;
+  border-radius: 15px;
+  padding: 30px;
   margin-bottom: 30px;
-  padding: 20px;
-  border: 1px solid #ccc;
+  transition: all 0.3s ease;
 }
 
+fieldset:hover {
+  border-color: #1e5a96;
+  box-shadow: 0 8px 25px rgba(30, 90, 150, 0.08);
+}
+
+/* ===== Section Titles ===== */
 legend {
-  font-weight: bold;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e5a96;
+  padding: 0 15px;
+  margin-left: -15px;
 }
 
+h3 {
+  margin-top: 25px;
+  margin-bottom: 15px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #2d3749;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ===== Labels ===== */
 label {
   display: block;
-  margin: 5px 0;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #4a5568;
 }
 
+/* ===== Inputs & Selects ===== */
 input,
 select {
   width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 2px solid #e2e8f0;
+  font-size: 14px;
+  background-color: #fff;
+  transition: all 0.3s ease;
 }
 
+input:hover,
+select:hover {
+  border-color: #cbd5e0;
+  background-color: #f7fafc;
+}
+
+/* ===== Focus State ===== */
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #1e5a96;
+  box-shadow: 0 0 0 4px rgba(30, 90, 150, 0.1);
+  background-color: #fff;
+}
+
+input:disabled,
+select:disabled {
+  background-color: #edf2f7;
+  color: #a0aec0;
+  cursor: not-allowed;
+}
+
+/* ===== Radio & Checkbox Styling ===== */
+input[type="radio"],
+input[type="checkbox"] {
+  width: auto;
+  margin-right: 10px;
+  cursor: pointer;
+  accent-color: #1e5a96;
+}
+
+fieldset label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+fieldset label:hover {
+  color: #1e5a96;
+}
+
+/* ===== Grid Layouts ===== */
 .grid-4 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
+  gap: 20px;
 }
 
 .grid-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
+  gap: 20px;
 }
 
 .grid-2 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
+  gap: 20px;
 }
 
-input:focus,
-select:focus {
-  outline: 2px solid #007bff;
-}
-
+/* ===== Submit Button ===== */
 button {
-  padding: 12px 20px;
+  display: block;
+  width: 100%;
+  padding: 16px;
   font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  background: linear-gradient(135deg, #1e5a96, #2c75b5);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 20px;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(30, 90, 150, 0.25);
+}
+
+button:active {
+  transform: translateY(-1px);
+}
+
+/* ===== Mobile Responsive ===== */
+@media (max-width: 900px) {
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
   .grid-4,
   .grid-3,
   .grid-2 {
     grid-template-columns: 1fr;
+  }
+
+  .container {
+    padding: 20px;
+    margin: 20px;
+  }
+
+  h1 {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+
+  fieldset {
+    padding: 20px;
   }
 }

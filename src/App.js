@@ -1,6 +1,63 @@
+import { useState } from "react";
 import "./App.css";
 
+
 function App() {
+  const [department, setDepartment] = useState("");
+  const [academicLevel, setAcademicLevel] = useState("");
+
+const programs = {
+  undergraduate: {
+    "College of Engineering and Architecture": [
+      "BS Architecture",
+      "BS Chemical Engineering",
+      "BS Civil Engineering",
+      "BS Computer Engineering",
+      "BS Electrical Engineering",
+      "BS Electronics Engineering",
+      "BS Industrial Engineering",
+      "BS Mechanical Engineering",
+    ],
+    "College of Computer Studies": [
+      "BS Computer Science",
+      "BS Data Science and Analytics",
+      "BS Entertainment and Multimedia Computing",
+      "BS Information Technology",
+    ],
+    "College of Business Education": [
+      "BS Accountancy",
+      "BS Accounting Information System",
+      "BS Business Administration – Financial Management",
+      "BS Business Administration – Human Resource Management",
+      "BS Business Administration – Logistics and Supply Chain Management",
+      "BS Business Administration – Marketing Management",
+    ],
+    "College of Arts": [
+      "Bachelor of Arts in English Language",
+      "Bachelor of Arts in Political Science",
+    ],
+  },
+  graduate: {
+    "Master Programs": [
+      "Master in Information Systems",
+      "Master in Information Technology",
+      "Master in Logistics and Supply Chain Management",
+      "Master of Engineering with Specialization in Civil Engineering",
+      "Master of Engineering with Specialization in Computer Engineering",
+      "Master of Engineering with Specialization in Electrical Engineering",
+      "Master of Engineering with Specialization in Electronics Engineering",
+      "Master of Engineering with Specialization in Industrial Engineering",
+      "Master of Engineering with Specialization in Mechanical Engineering",
+      "Master of Science in Computer Science",
+    ],
+    "Doctorate Programs": [
+      "Doctor in Information Technology",
+      "Doctor of Engineering with Specialization in Computer Engineering",
+      "Doctor of Philosophy in Computer Science",
+    ],
+  },
+};
+
   return (
     <div className="container">
       <h1>Student Enrollment Portal</h1>
@@ -135,78 +192,81 @@ function App() {
 
         {/* ENROLLMENT CHOICES */}
         <fieldset>
-          <legend>Enrollment Choices</legend>
+  <legend>Enrollment Choices</legend>
 
-          <h3>Academic Level</h3>
-          <label><input type="radio" name="level" /> Undergraduate</label>
-          <label><input type="radio" name="level" /> Graduate</label>
+  <h3>Academic Level</h3>
+  <label>
+    <input 
+      type="radio" 
+      name="level"
+      value="undergraduate"
+      checked={academicLevel === "undergraduate"}
+      onChange={(e) => {
+        setAcademicLevel(e.target.value);
+        setDepartment("");
+      }}
+    /> Undergraduate
+  </label>
+  <label>
+    <input 
+      type="radio" 
+      name="level"
+      value="graduate"
+      checked={academicLevel === "graduate"}
+      onChange={(e) => {
+        setAcademicLevel(e.target.value);
+        setDepartment("");
+      }}
+    /> Graduates
+  </label>
 
-          <h3>Semester</h3>
-          <label><input type="radio" name="semester" /> 1st Semester</label>
-          <label><input type="radio" name="semester" /> 2nd Semester</label>
+  <h3>Semester</h3>
+  <label>
+    <input type="radio" name="semester" /> 1st Semester
+  </label>
+  <label>
+    <input type="radio" name="semester" /> 2nd Semester
+  </label>
 
-          <h3>Campus</h3>
-          <label><input type="radio" name="campus" /> Manila</label>
-          <label><input type="radio" name="campus" /> Quezon City</label>
+  <h3>Campus</h3>
+  <label>
+    <input type="radio" name="campus" /> Manila
+  </label>
+  <label>
+    <input type="radio" name="campus" /> Quezon City
+  </label>
 
-          <h3>College Department</h3>
-          <select required>
-            <option value="">Select Department</option>
-            <option>College of Engineering and Architecture</option>
-            <option>College of Computer Studies</option>
-            <option>College of Business Education</option>
-            <option>College of Arts</option>
-          </select>
+  <h3>College Department</h3>
+  <select
+    value={department}
+    onChange={(e) => setDepartment(e.target.value)}
+    required
+    disabled={!academicLevel}
+  >
+    <option value="">
+      {academicLevel ? "Select Department" : "Select Academic Level First"}
+    </option>
+    {academicLevel &&
+      Object.keys(programs[academicLevel]).map((dept) => (
+        <option key={dept} value={dept}>
+          {dept}
+        </option>
+      ))}
+  </select>
 
-          <h3>Degree Program</h3>
-<select required>
-  <option value="">Select Program</option>
+  <h3>Degree Program</h3>
+  <select required disabled={!department}>
+    <option value="">
+      {department ? "Select Program" : "Select Department First"}
+    </option>
+    {department &&
+      programs[academicLevel][department].map((program) => (
+        <option key={program} value={program}>
+          {program}
+        </option>
+      ))}
+  </select>
 
-  {/* Undergraduate – Engineering & Architecture */}
-  <option>BS Architecture</option>
-  <option>BS Chemical Engineering</option>
-  <option>BS Civil Engineering</option>
-  <option>BS Computer Engineering</option>
-  <option>BS Electrical Engineering</option>
-  <option>BS Electronics Engineering</option>
-  <option>BS Industrial Engineering</option>
-  <option>BS Mechanical Engineering</option>
-
-  {/* Undergraduate – Computer Studies */}
-  <option>BS Computer Science</option>
-  <option>BS Data Science and Analytics</option>
-  <option>BS Entertainment and Multimedia Computing</option>
-  <option>BS Information Technology</option>
-
-  {/* Undergraduate – Business */}
-  <option>BS Accountancy</option>
-  <option>BS Accounting Information System</option>
-  <option>BS Business Administration – Financial Management</option>
-  <option>BS Business Administration – Human Resource Management</option>
-  <option>BS Business Administration – Logistics and Supply Chain Management</option>
-  <option>BS Business Administration – Marketing Management</option>
-
-  {/* Undergraduate – Arts */}
-  <option>Bachelor of Arts in English Language</option>
-  <option>Bachelor of Arts in Political Science</option>
-
-  {/* Graduate – Doctorate */}
-  <option>Doctor in Information Technology</option>
-  <option>Doctor of Engineering (Computer Engineering)</option>
-  <option>Doctor of Philosophy in Computer Science</option>
-
-  {/* Graduate – Master’s */}
-  <option>Master in Information Systems</option>
-  <option>Master in Information Technology</option>
-  <option>Master in Logistics and Supply Chain Management</option>
-  <option>Master of Engineering (Civil Engineering)</option>
-  <option>Master of Engineering (Computer Engineering)</option>
-  <option>Master of Engineering (Electrical Engineering)</option>
-  <option>Master of Engineering (Electronics Engineering)</option>
-  <option>Master of Engineering (Industrial Engineering)</option>
-  <option>Master of Engineering (Mechanical Engineering)</option>
-  <option>Master of Science in Computer Science</option>
-</select>
 
         </fieldset>
 
