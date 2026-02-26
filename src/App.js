@@ -130,14 +130,14 @@ const programs = {
             </div>
             <div>
               <label>Mobile Number</label>
-              <input type="tel" required />
+              <input type="number" required />
             </div>
           </div>
 
           <div className="grid-2">
             <div>
               <label>Landline</label>
-              <input type="tel" />
+              <input type="number" />
             </div>
             <div>
               <label>Barangay</label>
