@@ -124,6 +124,7 @@ const programs = {
               </select>
               {nationality === "Other" && (
                 <input
+                  className="fade-in"
                   type="text"
                   placeholder="Please specify"
                   value={otherNationality}
@@ -150,14 +151,31 @@ const programs = {
             </div>
             <div>
               <label>Mobile Number</label>
-              <input type="number" required />
+              <input 
+                type="text" 
+                placeholder="11 digits only"
+                pattern="[0-9]*"
+                maxLength="11"
+                onInput={(e) => {
+                  e.target.value = e.target.value.replace(/[^0-9]/g, "").slice(0, 11);
+                }}
+                required
+              />
             </div>
           </div>
 
           <div className="grid-2">
             <div>
               <label>Landline</label>
-              <input type="number" />
+              <input 
+                type="text" 
+                placeholder="8 digits only"
+                pattern="[0-9]*"
+                maxLength="8"
+                onInput={(e) => {
+                  e.target.value = e.target.value.replace(/[^0-9]/g, "").slice(0, 8);
+                }}
+              />
             </div>
             <div>
               <label>Barangay</label>
